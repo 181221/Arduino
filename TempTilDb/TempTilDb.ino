@@ -13,8 +13,8 @@ EthernetClient client;
 
 // MYSQL
 IPAddress server_addr(10,0,0,238); 
-char user[] = "brukernavn";         
-char password[] = "passord";        
+char user[] = "";         
+char password[] = "";        
 MySQL_Connection conn((Client *)&client);
 
 char INSERT_DATA[] = "INSERT INTO pederyodb.temp (verdi) VALUES (%s)";
@@ -43,7 +43,7 @@ void setup(void)
 void loop(void) { 
   double temp = hentTemp();
   kjorSql(temp);
-  delay(10000);
+  delay(30000);
 }
 
 double hentTemp(){
@@ -58,4 +58,3 @@ void kjorSql(double temp) {
   cur_mem->execute(query);
   delete cur_mem;
 }
-
